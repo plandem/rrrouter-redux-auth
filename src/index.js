@@ -1,5 +1,3 @@
-import createAuthMiddleware from './middleware';
-import reducer from './reducer';
-import { reset, identity } from './actions';
-
-export { createAuthMiddleware, reducer, reset, identity };
+export createAuthMiddleware from './middleware';
+export reducer from './reducer';
+export { reset, identity } from './actions';
