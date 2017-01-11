@@ -1,9 +1,10 @@
-import { AUTH_IDENTITY, AUTH_RESET, ACTION_PREFIX } from './actions';
+import { AUTH_RECEIVE, AUTH_REQUEST, AUTH_RESET, ACTION_PREFIX } from './actions';
 
 const authAction = new RegExp(`^${ACTION_PREFIX}`);
 
 const initialState = {
 	identity: null,
+	requesting: false,
 };
 
 export default function auth(state = initialState, action) {
@@ -12,16 +13,14 @@ export default function auth(state = initialState, action) {
 	}
 
 	switch (action.type) {
-		case AUTH_IDENTITY:
-			return { ...state, identity: action.identity };
+		case AUTH_RECEIVE:
+			return { ...state, identity: action.identity, requesting: false };
+
+		case AUTH_REQUEST:
+			return { ...state, requesting: true };
 
 		case AUTH_RESET:
 			return { ...initialState };
-
-		// case CHECK_ACCESS:
-		// 	return {}, state, {
-		// 		allowed: action.allowed
-		// 	});
 
 		default:
 			return state;
