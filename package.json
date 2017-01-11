@@ -1,6 +1,6 @@
 {
   "name": "rrrouter-redux-auth",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Auth middleware for rrrouter-redux",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
