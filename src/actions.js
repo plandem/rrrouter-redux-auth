@@ -1,32 +1,25 @@
-export const ACTION_PREFIX = '@@auth';
-export const AUTH_RESET = `${ACTION_PREFIX}/reset`;
-export const AUTH_REQUEST = `${ACTION_PREFIX}/request`;
-export const AUTH_RECEIVE = `${ACTION_PREFIX}/receive`;
+export const AUTH_ACTION = '@@auth';
+export const AUTH_RESET = `${AUTH_ACTION}/reset`;
+export const AUTH_REQUEST = `${AUTH_ACTION}/request`;
+export const AUTH_RECEIVE = `${AUTH_ACTION}/receive`;
 
 /**
  * reset current identity
  */
-export const reset = () => (dispatch) => {
-	dispatch({
-		type: AUTH_RESET
-	});
-};
+export function reset() {
+	return { type: AUTH_RESET };
+}
 
 /**
  * receive current identity
  */
-export const receive = (identity) => (dispatch) => {
-	dispatch({
-		type: AUTH_RECEIVE,
-		identity
-	});
-};
+export function receive(identity) {
+	return { type: AUTH_RECEIVE, identity };
+}
 
 /**
  * request current identity
  */
-export const request = () => (dispatch) => {
-	dispatch({
-		type: AUTH_REQUEST,
-	});
-};
+export function request() {
+	return { type: AUTH_REQUEST };
+}

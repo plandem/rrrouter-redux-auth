@@ -1,7 +1,7 @@
 {
   "name": "rrrouter-redux-auth",
   "version": "1.0.3",
-  "description": "Auth middleware for rrrouter-redux",
+  "description": "Auth middleware for rrrouter-provider-redux",
   "main": "lib/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
@@ -33,7 +33,7 @@
     "test"
   ],
   "peerDependencies": {
-    "rrrouter-redux": "1.x"
+    "rrrouter-provider-redux": "1.x"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

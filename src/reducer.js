@@ -1,6 +1,6 @@
-import { AUTH_RECEIVE, AUTH_REQUEST, AUTH_RESET, ACTION_PREFIX } from './actions';
+import { AUTH_RECEIVE, AUTH_REQUEST, AUTH_RESET, AUTH_ACTION } from './actions';
 
-const authAction = new RegExp(`^${ACTION_PREFIX}`);
+const authAction = new RegExp(`^${AUTH_ACTION}`);
 
 const initialState = {
 	identity: null,
