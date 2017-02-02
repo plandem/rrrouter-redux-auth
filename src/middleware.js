@@ -11,6 +11,10 @@ const defaultSettings = {
 
 const routerAction = new RegExp(`^${ROUTER_ACTION}`);
 
+const redirectUrl = (href, redirect) => {
+	return href !== '/' ? url.format({ pathname: redirect, search: `?return=${href}`}) : redirect;
+};
+
 const createAuthMiddleware = (settings = defaultSettings) => {
 	const { stateKey, redirect401, redirect403, checkAuth, checkAccess } = { ...defaultSettings, ...settings };
 
@@ -25,12 +29,11 @@ const createAuthMiddleware = (settings = defaultSettings) => {
 		//if user trying to navigate to non 401/403 pages, then checkAuth(authentication) and checkAccess(authorization)
 		if(action.location.pathname !== redirect401 && action.location.pathname !== redirect403) {
 			if(!auth || !checkAuth(auth)) {
-				const destination = action.href !== '/' ? url.format({ pathname: redirect401, search: `?return=${action.href}`}) : redirect401;
-				return store.dispatch(navigate(destination));
+				return store.dispatch(navigate(redirectUrl(action.href, redirect401)));
 			}
 
 			if(!checkAccess(auth, action, store)) {
-				return store.dispatch(navigate(redirect403));
+				return store.dispatch(navigate(redirectUrl(action.href, redirect403)));
 			}
 		}
 
