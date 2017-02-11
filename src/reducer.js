@@ -5,6 +5,7 @@ const authAction = new RegExp(`^${AUTH_ACTION}`);
 const initialState = {
 	identity: null,
 	requesting: false,
+	timestamp: null,
 };
 
 export default function auth(state = initialState, action) {
@@ -14,7 +15,7 @@ export default function auth(state = initialState, action) {
 
 	switch (action.type) {
 		case AUTH_RECEIVE:
-			return { ...state, identity: action.identity, requesting: false };
+			return { ...state, identity: action.identity, requesting: false, timestamp: Date.now() };
 
 		case AUTH_REQUEST:
 			return { ...state, requesting: true };
